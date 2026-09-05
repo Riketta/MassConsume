@@ -3,7 +3,7 @@
   <name>Mass Consume</name>
   <author>Riketta</author>
   <packageId>Riketta.MassConsume</packageId>
-  <modVersion IgnoreIfNoMatchingField="True">1.0.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.0.1</modVersion>
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
