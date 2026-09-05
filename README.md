@@ -43,9 +43,9 @@ work.
 
 - **Enabled** - master switch; hides the button while off.
 - **Debug logging** - Off / Basic / Verbose:
-  - Basic logs menu opens and every consume order (or skip).
+  - Basic logs menu opens and every consume order.
   - Verbose additionally logs each selection scan with a line per pawn and
-    per item (very spammy).
+    per item, plus every skipped pawn (very spammy).
 - **Log selection overview** - dumps the current selection to the log: every
   eligible pawn and each inventory item with its consumability verdict and
   the reason.
@@ -59,7 +59,8 @@ work.
   an entry; if something changed in between (an item was consumed elsewhere),
   the affected pawns are simply skipped.
 - Menu entries consume one item per pick (tiny items per the game's own
-  ingest amount, e.g. several berries at once).
+  ingest amount, e.g. several berries at once). Picking the same entry again
+  orders the next carried item, so repeat picks queue one item each.
 - The Ideology precept hints that vanilla's right-click menu shows for food
   in the world are not reproduced; consuming still causes the normal
   thoughts and mood effects.
@@ -80,7 +81,8 @@ For modders and the curious - no def, DLC or mod lists are hardcoded:
   Shift-queueing (the QueueOrder key binding) applies at menu-pick time.
 - The selection scan is cached per frame, so the per-frame UI cost is one
   scan regardless of selection size.
-- Debug logging (Basic/Verbose) covers scans, menu opens, orders and skips.
+- Debug logging: Basic covers menu opens and orders; Verbose additionally
+  covers the per-frame scans and skips.
 
 ## Build from source
 

@@ -12,7 +12,7 @@ One Consume button for your whole selection: select drafted pawns, pick an item 
 [list][*]Drafted pawns get a Consume command showing how many of them carry something consumable - Consume (6/7) means six of the seven selected pawns have an edible or drinkable item in their inventory.
 [*]Clicking it drops a list of everything carried, with a per-item carrier count: Simple meal (6/7), Beer (2/7), Go-juice (1/7)...
 [*]Picking an entry makes every carrier consume one item immediately, like the consume button in the Inventory tab. Pawns without the item do nothing.
-[*]Shift-click list entries to queue: meal first, then beer, then go-juice - pawns work through the queue in order.[/list]
+[*]Shift-click list entries to queue: meal first, then beer, then go-juice - pawns work through the queue in order (picking the same entry again orders the next carried item).[/list]
 
 [h3]Things to keep in mind[/h3]
 [list][*]Anything consumable works: meals, raw food, drugs, alcohol and modded or DLC items - the game's own edibility checks decide, so food restrictions, drug policies and traits are respected.

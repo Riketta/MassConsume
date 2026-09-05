@@ -6,7 +6,7 @@
   <MassConsume.Enabled.Tip>Master switch. While off, the Consume command is hidden; the setting itself is kept.</MassConsume.Enabled.Tip>
 
   <MassConsume.DebugLevel>Debug logging: {0}</MassConsume.DebugLevel>
-  <MassConsume.DebugLevel.Tip>Cycles Off / Basic / Verbose.\n\nBasic logs menu opens and every consume order or skip. Verbose additionally logs every selection scan with a line per pawn and per item (very spammy - only for hunting a specific issue).</MassConsume.DebugLevel.Tip>
+  <MassConsume.DebugLevel.Tip>Cycles Off / Basic / Verbose.\n\nBasic logs menu opens and every consume order. Verbose additionally logs every selection scan with a line per pawn and per item, and every skipped pawn (very spammy - only for hunting a specific issue).</MassConsume.DebugLevel.Tip>
 
   <MassConsume.LogOverview>Log selection overview</MassConsume.LogOverview>
   <MassConsume.LogOverview.Tip>Writes the current selection to the log: every eligible drafted pawn and, for each inventory item, whether the game considers it consumable and why.</MassConsume.LogOverview.Tip>
