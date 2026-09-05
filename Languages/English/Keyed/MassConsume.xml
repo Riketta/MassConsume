@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <MassConsume.SettingsCategory>Mass Consume</MassConsume.SettingsCategory>
+
+  <MassConsume.Enabled>Enabled</MassConsume.Enabled>
+  <MassConsume.Enabled.Tip>Master switch. While off, the Consume command is hidden; the setting itself is kept.</MassConsume.Enabled.Tip>
+
+  <MassConsume.DebugLevel>Debug logging: {0}</MassConsume.DebugLevel>
+  <MassConsume.DebugLevel.Tip>Cycles Off / Basic / Verbose.\n\nBasic logs menu opens and every consume order or skip. Verbose additionally logs every selection scan with a line per pawn and per item (very spammy - only for hunting a specific issue).</MassConsume.DebugLevel.Tip>
+
+  <MassConsume.LogOverview>Log selection overview</MassConsume.LogOverview>
+  <MassConsume.LogOverview.Tip>Writes the current selection to the log: every eligible drafted pawn and, for each inventory item, whether the game considers it consumable and why.</MassConsume.LogOverview.Tip>
+
+  <MassConsume.Consume>Consume</MassConsume.Consume>
+  <MassConsume.Consume.Desc>Opens a list of the food and drugs carried in the selected pawns' inventories. Pick an item and every selected pawn that carries it will consume one right away; pawns without the item do nothing.\n\nHold Shift while picking to queue the order instead of replacing the current one - repeat to line up several (meal, then beer, then go-juice).</MassConsume.Consume.Desc>
+  <MassConsume.Consume.CarriedBy>{0} of {1} selected pawns carry something consumable.</MassConsume.Consume.CarriedBy>
+
+  <MassConsume.BehaviorNote>Select one or more drafted pawns and click Consume to open the shared item list. Entries show how many of the selected pawns carry each item; picking one makes every carrier consume one. Uses the game's own edibility checks - meals, raw food, drugs and modded consumables all work, nothing is hardcoded.</MassConsume.BehaviorNote>
+</LanguageData>

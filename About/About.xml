@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Mass Consume</name>
+  <author>Riketta</author>
+  <packageId>Riketta.MassConsume</packageId>
+  <modVersion IgnoreIfNoMatchingField="True">1.0.0</modVersion>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Adds a single Consume command for drafted pawns that works on the whole selection at once. The button shows how many of the selected pawns actually carry something consumable - "Consume (6/7)" means six of the seven selected pawns have an edible or drinkable item in their pockets. Pressing it drops a list of everything carried, one entry per item with its own carrier count ("Simple meal (6/7)"); picking an entry makes every selected pawn that carries it consume one right away, while pawns without the item do nothing.
+
+Everything consumable counts: meals, raw food, drugs, beer, anything any mod or DLC makes ingestible. The decision is delegated to the game's own edibility checks - the exact same ones behind the consume button in a pawn's Inventory tab - so food restrictions, drug policies, traits and modded items all behave correctly with zero hardcoded defs. Orders go through the game's normal ordered-job pipeline: hold Shift while picking list entries to queue them up (eat the meal, then drink the beer, then take the go-juice) and the pawns work through the queue in order.
+
+Optional layered debug logging (Off / Basic / Verbose) and a one-click selection overview live in the mod settings.
+
+Source code &amp; details: https://github.com/Riketta/MassConsume</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopURL>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopURL>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+</ModMetaData>
