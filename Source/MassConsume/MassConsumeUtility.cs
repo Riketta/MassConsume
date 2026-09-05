@@ -19,7 +19,6 @@ namespace MassConsume
         // Per-frame cache: every selected pawn's gizmo postfix reads the same
         // aggregate, so the selection is scanned once per frame, not per pawn.
         private static int scanFrame = -1;
-        private static bool scannedThisFrame;
         private static int totalPawns;
         private static int pawnsWithItems;
         private static readonly List<Pawn> tmpEligible = new List<Pawn>();
@@ -69,12 +68,11 @@ namespace MassConsume
 
         private static void ScanSelection()
         {
-            if (scannedThisFrame && scanFrame == Time.frameCount)
+            if (scanFrame == Time.frameCount)
             {
                 return;
             }
             scanFrame = Time.frameCount;
-            scannedThisFrame = true;
 
             tmpEligible.Clear();
             tmpKnownDefs.Clear();
@@ -336,8 +334,9 @@ namespace MassConsume
             }
         }
 
-        /// <summary>Mirrors the branches of WillIngestFromInventoryNow so the
-        /// overview explains WHY an item is (not) consumable.</summary>
+        /// <summary>Mirrors the disjunction in WillIngestFromInventoryNow
+        /// ((food &amp;&amp; WillEat) || CanTakeDrug) so the overview explains WHY
+        /// an item is (not) consumable, including food/drug combos.</summary>
         private static string DescribeItem(Pawn pawn, Thing item)
         {
             if (item == null || item.def == null)
@@ -352,13 +351,33 @@ namespace MassConsume
             {
                 return "not ingestible right now (e.g. burning)";
             }
-            if (item.def.IsNutritionGivingIngestible)
+            bool isFood = item.def.IsNutritionGivingIngestible;
+            bool isDrug = item.def.GetCompProperties<CompProperties_Drug>() != null;
+            bool willEat = isFood && pawn.WillEat(item);
+            bool canTakeDrug = isDrug && pawn.CanTakeDrug(item.def);
+            if (willEat && canTakeDrug)
             {
-                return pawn.WillEat(item) ? "food - will eat" : "food - will NOT eat (food restrictions)";
+                return "food and drug - will consume";
             }
-            if (item.def.GetCompProperties<CompProperties_Drug>() != null)
+            if (willEat)
             {
-                return pawn.CanTakeDrug(item.def) ? "drug - can take" : "drug - will NOT take (drug policy or traits)";
+                return "food - will eat";
+            }
+            if (canTakeDrug)
+            {
+                return "drug - can take";
+            }
+            if (isFood && isDrug)
+            {
+                return "food/drug - will NOT eat (food restrictions) and will NOT take (drug policy or traits)";
+            }
+            if (isFood)
+            {
+                return "food - will NOT eat (food restrictions)";
+            }
+            if (isDrug)
+            {
+                return "drug - will NOT take (drug policy or traits)";
             }
             return "ingestible but neither nutrition-giving nor a drug";
         }

@@ -32,6 +32,8 @@ namespace MassConsume
     {
         public const string PackageId = "Riketta.MassConsume";
 
+        private static readonly int DebugLevelCount = Enum.GetValues(typeof(DebugLogLevel)).Length;
+
         public static MassConsumeSettings Settings;
 
         /// <summary>Master switch, read by the patch on each call. Null-safe:
@@ -79,7 +81,7 @@ namespace MassConsume
             string levelName = ((DebugLogLevel)Settings.debugLevel).ToString();
             if (Widgets.ButtonText(debugRect, "MassConsume.DebugLevel".Translate(levelName)))
             {
-                Settings.debugLevel = (Settings.debugLevel + 1) % 3;
+                Settings.debugLevel = (Settings.debugLevel + 1) % DebugLevelCount;
             }
             TooltipHandler.TipRegion(debugRect, "MassConsume.DebugLevel.Tip".Translate());
             list.Gap(6f);
