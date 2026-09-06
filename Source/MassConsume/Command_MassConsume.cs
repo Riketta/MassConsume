@@ -18,17 +18,11 @@ namespace MassConsume
         public Command_MassConsume(Pawn pawn)
         {
             Pawn = pawn;
-            // Counts come from the per-frame selection scan that ran right
-            // before this command was created (see CreateConsumeCommand).
-            int total = MassConsumeUtility.TotalPawns;
-            int carrying = MassConsumeUtility.PawnsWithItems;
-            defaultLabel = "MassConsume.Consume".Translate();
-            defaultDesc = "MassConsume.Consume.Desc".Translate();
-            if (total > 1)
-            {
-                defaultLabel += " (" + carrying + "/" + total + ")";
-                defaultDesc += "\n\n" + "MassConsume.Consume.CarriedBy".Translate(carrying, total);
-            }
+            // Composed once per scan; identical labels across the selected
+            // pawns' instances are also what makes the vanilla gizmo grid
+            // merge them into one button.
+            defaultLabel = MassConsumeUtility.SharedLabel;
+            defaultDesc = MassConsumeUtility.SharedDesc;
             icon = Icon;
         }
 

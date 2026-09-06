@@ -21,14 +21,18 @@ namespace MassConsume
         private static int scanFrame = -1;
         private static int totalPawns;
         private static int pawnsWithItems;
+        private static string sharedLabel;
+        private static string sharedDesc;
         private static readonly List<Pawn> tmpEligible = new List<Pawn>();
         private static readonly List<Pawn> tmpGroupPawns = new List<Pawn>();
         private static readonly HashSet<ThingDef> tmpDefFlags = new HashSet<ThingDef>();
         private static readonly HashSet<ThingDef> tmpKnownDefs = new HashSet<ThingDef>();
 
-        public static int TotalPawns => totalPawns;
+        /// <summary>Button label/description shared by every pawn's command in
+        /// this frame's scan - composed once per scan, not once per pawn.</summary>
+        public static string SharedLabel => sharedLabel;
 
-        public static int PawnsWithItems => pawnsWithItems;
+        public static string SharedDesc => sharedDesc;
 
         /// <summary>Drafted, player-controlled pawns with an inventory - the
         /// audience vanilla's draft commands address, restricted to pawns that
@@ -124,6 +128,19 @@ namespace MassConsume
             {
                 DebugLog.Verbose("scan: " + pawnsWithItems + "/" + totalPawns + " selected pawn(s) carry consumables, "
                     + tmpKnownDefs.Count + " distinct item type(s).");
+            }
+
+            // One shared label/description per scan: every pawn's command this
+            // frame shows the same aggregate, so build the strings once.
+            if (pawnsWithItems > 0)
+            {
+                sharedLabel = "MassConsume.Consume".Translate();
+                sharedDesc = "MassConsume.Consume.Desc".Translate();
+                if (totalPawns > 1)
+                {
+                    sharedLabel += " (" + pawnsWithItems + "/" + totalPawns + ")";
+                    sharedDesc += "\n\n" + "MassConsume.Consume.CarriedBy".Translate(pawnsWithItems, totalPawns);
+                }
             }
         }
 
